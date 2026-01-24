@@ -1,0 +1,25 @@
+title: Suspicious PowerShell Execution
+id: dev-001
+status: development
+description: Detects suspicious Powershell execution patterns
+author: detection-pipeline
+date: 2026-01-24
+
+
+logsource:
+  product: windows
+  service: security
+
+
+detection:
+  selection:
+    EventID: 4688
+    NewProcessName|contains:
+      - "powershell.exe"
+  condition: selection
+
+
+mitre:
+  tactic: execution
+  technique: T1059
+  subtechnique: T1059.001
