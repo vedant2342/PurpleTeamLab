@@ -1,0 +1,32 @@
+rule_lifecycle:
+  development:
+    description: Rule is under development and not trusted
+    allowed_actions:
+      - edit
+      - test
+      - simulate
+
+  testing:
+    description: Rule is being tested against simulations
+    allowed_actions:
+      - simulate
+      - tune
+      - validate
+
+  validated:
+    description: Rule has passed quality checks
+    allowed_actions:
+      - promote
+      - monitor
+
+  production:
+    description: Rule is active in production environment
+    allowed_actions:
+      - alert
+      - respond
+      - monitor
+
+  deprecated:
+    description: Rule is no longer in use
+    allowed_actions:
+      - archive
