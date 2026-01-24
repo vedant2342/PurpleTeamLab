@@ -1,0 +1,39 @@
+framework: MITRE ATT&CK
+version: v14
+last_updated: 2026-01-24
+
+
+tactics:
+  execution:
+    description: Execution of malicious code
+    techniques:
+      T1059:
+        name: Command and Scripting Interpreter
+        platforms:
+          - windows
+          - linux
+          - macos
+        subtechniques:
+          T1059.001:
+            name: PowerShell
+            rules:
+              - suspicious_powershell.yml
+
+presistence:
+  description: Maintaining access
+  techniques:
+    T1547:
+      name: Boot or Logon Autostart Execution
+      platforms:
+        - windows
+      rules: []
+
+privilege_escaltion:
+  description: Gaining higher privileges
+  techniques:
+    T1068:
+      name: Exploitation for Privilege Escaltion
+      platforms:
+        - windows
+        - linux
+      rules: []
