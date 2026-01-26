@@ -1,0 +1,27 @@
+title: Linux Suspicious File Access Behavior
+id: dev-linux-002
+status: development
+description: Detects potential sensitive file access activity
+author: detection-pipeline
+date: 2026-01-24
+
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains:
+      - "cat "
+      - "less "
+      - "more "
+      - "strings "
+      - "/etc/passwd"
+      - "/etc/shadow"
+      - ".ssh"
+      - "id_rsa"
+  condition: selection
+
+mitre:
+  tactic: collection
+  technique: T1005

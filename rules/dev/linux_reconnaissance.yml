@@ -1,0 +1,25 @@
+title: Linux System Reconnaissance Behavior
+id: dev-linux-001
+status: development
+description: Detects potential system reconnaissance activity on Linux
+author: detection-pipeline
+date: 2026-01-24
+
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains:
+      - "uname"
+      - "whoami"
+      - "id"
+      - "hostname"
+      - "ip "
+      - "ifconfig"
+  condition: selection
+
+mitre:
+  tactic: discovery
+  technique: T1082
