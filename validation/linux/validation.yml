@@ -1,0 +1,28 @@
+pipeline: linux-detection-validation
+environment: dev
+platform: linux
+
+stages:
+  - simulation
+  - detection_test
+  - validation
+  - promotion_check
+
+simulation:
+  source: atomic-red-team
+  techniques:
+    - T1082   # System Information Discovery
+    - T1005   # Data from Local System
+
+detection_test:
+  rules_path: rules/dev/linux
+  required_match: true
+
+validation:
+  min_confidence_score: 0.7
+  max_false_positive_rate: 0.2
+  required_behavior_match: true
+
+promotion:
+  auto_promote: false
+  target: rules/prod/linux
