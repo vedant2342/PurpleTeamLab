@@ -1,6 +1,6 @@
 Write-Host "=== Windows Detection Validation ==="
 
-$rules = Get-ChildItem "../../rules/dev/windows/*.yml"
+$rules = Get-ChildItem "../../rules/dev/windows/*.yml " -ErrorAction SilentlyContinue
 
 foreach ($rule in $rules) {
     Write-Host "[TESTING] $($rule.Name)"
