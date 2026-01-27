@@ -9,7 +9,7 @@ on:
   pull_request:
 
 jobs:
-  detection-pipeline:
+  linux-pipeline:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,16 +19,25 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt install -y bash powershell
+        sudo apt install -y bash
 
-    - name: Set execute permissions
-      run: |
-        chmod +x simulations/linux/run_simulation.sh || true
-        chmod +x validation/run_pipeline.sh || true
-        chmod +x validation/linux/test_detections.sh || true
-
-    - name: Run Unified Detection Pipeline (Linux + Windows)
+    - name: Run Linux Detection Pipeline
       run: |
         cd validation
         ./run_pipeline.sh
+
+
+  windows-pipeline:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run Windows Detection Pipeline
+      shell: pwsh
+      run: |
+        cd validation
+        ./run_pipeline.sh
+
 
