@@ -16,31 +16,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Setup environment
+    - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt install -y bash
+        sudo apt install -y bash powershell
 
-    - name: Run Simulation Stage
+    - name: Set execute permissions
       run: |
-        echo "===== SIMULATION STAGE ====="
-        chmod +x simulations/linux/run_simulation.sh
-        ./simulations/linux/run_simulation.sh
+        chmod +x simulations/linux/run_simulation.sh || true
+        chmod +x validation/run_pipeline.sh || true
+        chmod +x validation/linux/test_detections.sh || true
 
-    - name: Detection Testing Stage
+    - name: Run Unified Detection Pipeline (Linux + Windows)
       run: |
-        echo "===== DETECTION TESTING STAGE ====="
-        chmod +x validation/linux/test_detections.sh
-        ./validation/linux/test_detections.sh
+        cd validation
+        ./run_pipeline.sh
 
-    - name: Validation Stage
-      run: |
-        echo "===== VALIDATION STAGE ====="
-        echo "[VALIDATION] Behavior match: OK"
-        echo "[VALIDATION] False positives: LOW"
-        echo "[VALIDATION] Confidence score: HIGH"
-
-    - name: Promotion Gate
-      run: |
-        echo "===== PROMOTION GATE ====="
-        echo "Manual approval required for promotion"

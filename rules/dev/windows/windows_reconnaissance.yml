@@ -1,0 +1,23 @@
+title: Windows Reconnaissance Activity
+id: win-recon-001
+status: experimental
+description: Detects reconnaissance and system discovery activity on Windows systems
+author: detection-pipeline
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    CommandLine|contains:
+      - "systeminfo"
+      - "whoami"
+      - "hostname"
+      - "Get-LocalUser"
+      - "Get-Process"
+      - "Get-ChildItem"
+  condition: selection
+level: medium
+tags:
+  - attack.discovery
+  - attack.t1082   # System Information Discovery
+  - attack.t1033   # Account Discovery
