@@ -26,16 +26,16 @@ The goal of this project is to:
 ## 🧱 Architecture
 
 Attacker Simulation
-↓
+---->
 Detection Rules
-↓
+---->
 Validation Engine
-↓
+---->
 Alert Engine
-↓
+---->
 Severity Classification
-↓
+---->
 CI/CD Pipeline
-↓
+---->
 Purple Team Feedback Loop
 
