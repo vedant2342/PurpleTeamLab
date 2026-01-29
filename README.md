@@ -1,6 +1,12 @@
 # 🟣 Purple Team Detection Lab  
 **End-to-End Detection Engineering & Alerting Framework**
 
+## 📦 Project Status
+🟢 **Version 1.0 – Core Purple Team Lab (Stable Foundation Release)**
+
+This is the initial stable release of the PurpleTeamLab platform.
+
+
 ## 📌 Overview
 This project is an **end-to-end detection engineering pipeline** that simulates real-world cyber attacks, validates detection logic, classifies threat severity, and generates security alerts in a Purple Team lab environment.
 
