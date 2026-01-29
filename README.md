@@ -47,11 +47,11 @@ Purple Team Feedback Loop
 
 ---
 
-#Quick Demo
-# Run full pipeline
+## Quick Demo
+Run full pipeline
 cd validation
 ./run_pipeline.sh
 
-# Trigger alert manually
+Trigger alert manually
 ./alerts/linux_alert_engine.sh "cat /etc/shadow"
 
