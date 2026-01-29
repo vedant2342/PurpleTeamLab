@@ -49,7 +49,7 @@ Purple Team Feedback Loop
 
 ## Quick Demo
 Run full pipeline
-cd validation
+> cd validation
 ./run_pipeline.sh
 
 Trigger alert manually
