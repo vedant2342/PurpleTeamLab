@@ -53,7 +53,9 @@ Purple Team Feedback Loop
 ```bash
 cd validation
 ./run_pipeline.sh
+```
 
-
-
+### Trigger Alert Manually
+```bash
 ./alerts/linux_alert_engine.sh "cat /etc/shadow"
+```
